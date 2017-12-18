@@ -64,9 +64,11 @@ public class MockDataService extends DataService {
 	public boolean isUserAutorizated(String username, String password) {
 
 		Connection conn = getConnection();
+		PreparedStatement ps = null;
+		ResultSet result = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement("Select * from Usuarios");
-			ResultSet result = ps.executeQuery();
+			ps = conn.prepareStatement("Select * from Usuarios");
+			result = ps.executeQuery();
 
 			while (result.next()) {
 				String name = result.getString("Nombre");
@@ -75,9 +77,16 @@ public class MockDataService extends DataService {
 				if (name.compareTo(username) == 0 && password.compareTo(pass) == 0)
 					return true;
 			}
-		} catch (SQLException e) {			
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		} finally {
+			try {
+				result.close();
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return false;
