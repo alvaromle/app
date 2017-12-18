@@ -1,6 +1,7 @@
 package com.gac.app.backend;
 
 import java.io.Serializable;
+import java.sql.Connection;
 import java.util.Collection;
 
 import com.gac.app.backend.data.Category;
@@ -11,6 +12,10 @@ import com.gac.app.backend.mock.MockDataService;
  * Back-end service interface for retrieving and updating product data.
  */
 public abstract class DataService implements Serializable {
+	
+	public abstract Connection getConnection();
+	
+	public abstract boolean isUserAutorizated(String username, String password);
 
     public abstract Collection<Product> getAllProducts();
 
