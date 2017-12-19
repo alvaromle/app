@@ -67,8 +67,8 @@ public class LoginScreen extends CssLayout {
         loginForm.setSizeUndefined();
         loginForm.setMargin(false);
 
-        loginForm.addComponent(username = new TextField("Username", "admin"));
-        username.setWidth(15, Unit.EM);
+        loginForm.addComponent(username = new TextField("Username"));
+        username.setWidth(15, Unit.EM);        
         loginForm.addComponent(password = new PasswordField("Password"));
         password.setWidth(15, Unit.EM);
         password.setDescription("Write anything");
@@ -91,7 +91,7 @@ public class LoginScreen extends CssLayout {
         login.setClickShortcut(ShortcutAction.KeyCode.ENTER);
         login.addStyleName(ValoTheme.BUTTON_FRIENDLY);
 
-        buttons.addComponent(forgotPassword = new Button("Forgot password?"));
+        buttons.addComponent(forgotPassword = new Button("¿Olvidaste la contraseña?"));
         forgotPassword.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
@@ -118,8 +118,8 @@ public class LoginScreen extends CssLayout {
         if (accessControl.signIn(username.getValue(), password.getValue())) {
             loginListener.loginSuccessful();
         } else {
-            showNotification(new Notification("Login failed",
-                    "Please check your username and password and try again.",
+            showNotification(new Notification("¡Ups!",
+                    "Comprueba usuario y/o contraseña",
                     Notification.Type.HUMANIZED_MESSAGE));
             username.focus();
         }

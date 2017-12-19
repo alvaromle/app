@@ -2,7 +2,7 @@ package com.gac.app.backend.data;
 
 public enum RoleType {
 
-	USUARIO("Usuario"), TECNICO("Tecnico"), ADMIN("Administrador");
+	USUARIO("Usuario"), TECNICO("Tecnico"), ADMIN("Admin");
 
 	private final String rol;
 
