@@ -67,16 +67,15 @@ public class MockDataService extends DataService {
 		PreparedStatement ps = null;
 		ResultSet result = null;
 		try {
-			ps = conn.prepareStatement("Select * from Usuarios");
+			String query = "Select * from Usuarios where UPPER(Nombre)=? and UPPER(Password)=?";
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username.toUpperCase());
+			ps.setString(2, password.toUpperCase());
 			result = ps.executeQuery();
+			
+			if (result.next()) 
+				return true;
 
-			while (result.next()) {
-				String name = result.getString("Nombre");
-				String pass = result.getString("Password");
-
-				if (name.compareTo(username) == 0 && password.compareTo(pass) == 0)
-					return true;
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
