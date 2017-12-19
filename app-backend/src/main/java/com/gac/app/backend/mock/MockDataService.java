@@ -10,12 +10,18 @@ import java.util.List;
 import com.gac.app.backend.DataService;
 import com.gac.app.backend.data.Category;
 import com.gac.app.backend.data.Product;
+import com.gac.app.backend.data.User;
 
 /**
  * Mock data model. This implementation has very simplistic locking and does not
  * notify users of modifications.
  */
 public class MockDataService extends DataService {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private static MockDataService INSTANCE;
 
@@ -87,8 +93,46 @@ public class MockDataService extends DataService {
 				e.printStackTrace();
 			}
 		}
-
 		return false;
+	}
+	
+	@Override
+	public User getUserLoged(String username, String password) {
+		
+		Connection conn = getConnection();
+		PreparedStatement ps = null;
+		ResultSet result = null;
+		
+		User user = null;
+		
+		try {
+			String query = "Select * from Usuarios where UPPER(Nombre)=? and UPPER(Password)=?";
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username.toUpperCase());
+			ps.setString(2, password.toUpperCase());
+			result = ps.executeQuery();
+			
+			if (result.next()) {
+				user = new User();
+				user.setUser(result.getString("Nombre"));
+				user.setPassword(result.getString("Password"));
+				return user;
+			}				
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				result.close();
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
+		
+		
 	}
 
 	@Override

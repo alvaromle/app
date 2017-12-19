@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import com.gac.app.backend.data.Category;
 import com.gac.app.backend.data.Product;
+import com.gac.app.backend.data.User;
 import com.gac.app.backend.mock.MockDataService;
 
 /**
@@ -16,6 +17,8 @@ public abstract class DataService implements Serializable {
 	public abstract Connection getConnection();
 	
 	public abstract boolean isUserAutorizated(String username, String password);
+	
+	public abstract User getUserLoged(String username, String password);
 
     public abstract Collection<Product> getAllProducts();
 
