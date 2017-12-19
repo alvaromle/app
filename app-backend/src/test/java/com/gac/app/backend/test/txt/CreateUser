@@ -1,0 +1,10 @@
+CREATE TABLE User (
+ID int NOT NULL AUTO_INCREMENT, 
+user varchar(30) NOT NULL,
+email varchar(50) NOT NULL,
+name varchar(30) not null,
+surname varchar(30) not null,
+password varchar(128) NOT NULL,
+rol varchar(10) not null,
+lastlogin TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY ( id ));
