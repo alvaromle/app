@@ -27,7 +27,7 @@ import com.vaadin.ui.themes.ValoTheme;
  */
 @Viewport("user-scalable=no,initial-scale=1.0")
 @Theme("mytheme")
-@Widgetset("com.alvaro.app.MyAppWidgetset")
+@Widgetset("com.gac.app.MyAppWidgetset")
 public class SAC extends UI {
 
     private AccessControl accessControl = new BasicAccessControl();

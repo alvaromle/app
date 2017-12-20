@@ -30,7 +30,7 @@ public class MockDataService extends DataService {
 	private int nextProductId = 0;
 
 	private Connection conn = null;
-	private final String url = "jdbc:mysql://localhost:3306/pruebabd?autoReconnect=true&useSSL=false";
+	private final String url = "jdbc:mysql://localhost:3306/gac?autoReconnect=true&useSSL=false";
 	private final String username = "root";
 	private final String password = "root";
 
@@ -73,7 +73,7 @@ public class MockDataService extends DataService {
 		PreparedStatement ps = null;
 		ResultSet result = null;
 		try {
-			String query = "Select * from Usuarios where UPPER(Nombre)=? and UPPER(Password)=?";
+			String query = "Select * from User where UPPER(User)=? and UPPER(Password)=?";
 			ps = conn.prepareStatement(query);
 			ps.setString(1, username.toUpperCase());
 			ps.setString(2, password.toUpperCase());
@@ -106,7 +106,7 @@ public class MockDataService extends DataService {
 		User user = null;
 		
 		try {
-			String query = "Select * from Usuarios where UPPER(Nombre)=? and UPPER(Password)=?";
+			String query = "Select * from User where UPPER(user)=? and UPPER(password)=?";
 			ps = conn.prepareStatement(query);
 			ps.setString(1, username.toUpperCase());
 			ps.setString(2, password.toUpperCase());

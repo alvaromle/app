@@ -44,7 +44,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.45</version>
+			<version>5.1.45</version><!--$NO-MVN-MAN-VER$-->
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
@@ -78,6 +78,7 @@
 											<!-- If there already is a compiled theme, we want to recompile 
 												it -->
 											<excludes>VAADIN/themes/**/styles.css</excludes>
+											<excludes>VAADIN/themes/**/gacstyle.css</excludes>
 											<outputDirectory>${vaadin.resource.directory}</outputDirectory>
 										</artifactItem>
 										<artifactItem>
@@ -85,7 +86,7 @@
 											<artifactId>app-widgetset</artifactId>
 											<version>${project.version}</version>
 											<type>jar</type>
-											<includes>com/alvaro/app/**</includes>
+											<includes>com/gac/app/**</includes>
 											<!-- Vaadin/GWT plug-in expects .gwt.xml to be in its warSourceDirectory -->
 											<outputDirectory>${vaadin.resource.directory}/WEB-INF/classes</outputDirectory>
 										</artifactItem>
@@ -115,7 +116,7 @@
 						<groupId>com.vaadin</groupId>
 						<artifactId>vaadin-maven-plugin</artifactId>
 						<configuration>
-							<module>com.alvaro.app.MyAppWidgetset</module>
+							<module>com.gac.app.MyAppWidgetset</module>
 							<extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
 							<warSourceDirectory>${vaadin.resource.directory}</warSourceDirectory>
 							<webappDirectory>${vaadin.resource.directory}/VAADIN/widgetsets</webappDirectory>

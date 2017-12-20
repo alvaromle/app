@@ -67,16 +67,17 @@ public class LoginScreen extends CssLayout {
         loginForm.setSizeUndefined();
         loginForm.setMargin(false);
 
-        loginForm.addComponent(username = new TextField("Username"));
-        username.setWidth(15, Unit.EM);        
-        loginForm.addComponent(password = new PasswordField("Password"));
+        loginForm.addComponent(username = new TextField("Usuario"));
+        username.setWidth(15, Unit.EM);  
+        username.setDescription("Escribe el nombre de usuario");
+        loginForm.addComponent(password = new PasswordField("Contraseña"));
         password.setWidth(15, Unit.EM);
-        password.setDescription("Write anything");
+        password.setDescription("Escribe la contraseña");
         CssLayout buttons = new CssLayout();
         buttons.setStyleName("buttons");
         loginForm.addComponent(buttons);
 
-        buttons.addComponent(login = new Button("Login"));
+        buttons.addComponent(login = new Button("Entrar"));
         login.setDisableOnClick(true);
         login.addClickListener(new Button.ClickListener() {
             @Override
@@ -95,7 +96,7 @@ public class LoginScreen extends CssLayout {
         forgotPassword.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                showNotification(new Notification("Hint: Try anything"));
+                showNotification(new Notification("En desarrollo ....")); 
             }
         });
         forgotPassword.addStyleName(ValoTheme.BUTTON_LINK);
